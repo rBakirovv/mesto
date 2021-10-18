@@ -6,3 +6,12 @@
   color: #fff;
   margin: 22px 0 0 30px;
 }
+
+@media screen and (max-width:760px) {
+  .profile__name{
+    font-size: 27px;
+    line-height: 33px;
+    text-align: center;
+    margin-top: 26px;
+  }
+}

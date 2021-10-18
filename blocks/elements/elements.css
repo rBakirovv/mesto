@@ -1,6 +1,7 @@
 .elements{
   display: grid;
-  margin: 51px 200px 0;
-  grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
+  margin: 51px auto 0;
+  grid-template-columns: repeat(auto-fill, minmax(282px, 282px));
+  justify-content: center;
   gap: 20px 17px;
 }
