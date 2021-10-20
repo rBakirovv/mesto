@@ -1,6 +1,6 @@
 .profile__add-button{
   background-image: url(../../../images/AddButton.svg);
-  background-color: Transparent;
+  background-color: transparent;
   cursor: pointer;
   border: 2px solid #FFFFFF;
   box-sizing: border-box;
