@@ -8,16 +8,15 @@ let statusElement = document.querySelector('.profile__status');
 let nameInput = document.querySelector('#popup__field-name');
 let statusInput = document.querySelector('#popup__field-status');
 
-popupEditButton.addEventListener('click', function(){
+function popupEditOpened(){
   popupProfile.classList.add('popup_opened');
   nameInput.value = nameElement.textContent;
   statusInput.value = statusElement.textContent;
-});
+}
 
 function popupEditCloued(){
   popupProfile.classList.remove('popup_opened');
 }
-popupClousedButton.addEventListener('click',popupEditCloued);
 
 function formSubmitHandler (evt) {
   evt.preventDefault();
@@ -26,5 +25,6 @@ function formSubmitHandler (evt) {
   popupEditCloued()
 }
 
-popupSaveButton.addEventListener('click',formSubmitHandler);
+popupEditButton.addEventListener('click',popupEditOpened)
+popupClousedButton.addEventListener('click',popupEditCloued);
 formElement.addEventListener('submit', formSubmitHandler); 

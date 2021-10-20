@@ -9,9 +9,3 @@
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
 }
-
-@media screen and (max-width: 900px) {
-  .body__container{
-    margin: 0 27px;
-  }
-}

@@ -1,3 +1,5 @@
 .profile__edit{
-  display: flex;
+  display: grid;
+  margin-left: 30px;
 }
+

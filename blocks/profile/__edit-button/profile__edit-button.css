@@ -1,6 +1,6 @@
 .profile__edit-button{
   background-image: url(../../../images/Vector.svg);
-  background-color: transparent;
+  background-color: Transparent;
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -8,10 +8,9 @@
   box-sizing: border-box;
   width: 24px;
   height: 24px;
-  margin: 37px 0 0 18px;
-  -webkit-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
+  margin: 37px 15px 0 18px;
   transition: all 0.4s ease-in-out;
+  grid-column: 2;
 }
 
 .profile__edit-button:hover{
@@ -22,6 +21,6 @@
   .profile__edit-button{
     width: 18px;
     height: 18px;
-    margin: 34px 0 0 10px;
+    margin: 34px 19px 0 10px;
   }
 }

@@ -2,7 +2,7 @@
   background-image: url(../../../images/CloseIcon.svg);
   width: 32px;
   height: 32px;
-  background-color: transparent;
+  background-color: Transparent;
   cursor: pointer;
   background-position: center;
   background-repeat: no-repeat;
@@ -10,8 +10,6 @@
   position: absolute;
   right: -40px;
   top: -40px;
-  -webkit-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
