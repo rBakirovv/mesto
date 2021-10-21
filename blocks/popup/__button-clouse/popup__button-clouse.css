@@ -19,6 +19,7 @@
 
 @media screen and (max-width:760px) {
   .popup__button-clouse{
+    background-size: cover;
     width: 20px;
     height: 20px;
     right: 0;
