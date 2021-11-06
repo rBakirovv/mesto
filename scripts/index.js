@@ -120,7 +120,7 @@ function addCard(evt) {
   closePopup(popupAddMesto);
 };
 
-popupEditButton.addEventListener('click',() => openPopupEdit(popupProfile));
+popupEditButton.addEventListener('click',openPopupEdit);
 popupEditClousedButton.addEventListener('click',() => closePopup(popupProfile));
 formEditElement.addEventListener('submit', formSubmitHandler);
 
