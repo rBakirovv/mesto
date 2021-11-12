@@ -51,24 +51,24 @@ const initialCards = [
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-}
+};
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-}
+};
 
 function openPopupEdit(){
   openPopup(popupProfile);
   nameInput.value = nameElement.textContent;
   statusInput.value = statusElement.textContent;
-}
+};
 
 function formSubmitHandler (evt) {
   evt.preventDefault();
   nameElement.textContent = nameInput.value;
   statusElement.textContent = statusInput.value;
   closePopup(popupProfile);
-}
+};
 
 initialCards.forEach(element =>{
   renderCard(element);
@@ -115,8 +115,7 @@ function addCard(evt) {
 
   renderCard(newCard);
   
-  mestoInput.value = '';
-  linkImageInput.value = '';
+  formAddElement.reset();
 
   closePopup(popupAddMesto);
 };
