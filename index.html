@@ -36,8 +36,22 @@
           <button type="button" class="popup__button-clouse popup__edit-button-clouse"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form popup__edit-form" name="edit-form" novalidate>
-            <input class="popup__field" id="popup__field-name" name="name" type="text" required minlength="2" maxlength="40"> <!--popup__field_type_error-->
-            <input class="popup__field" id="popup__field-status" name="status" type="text" required minlength="2" maxlength="200">
+            <input
+            class="popup__field popup__field-name"
+            id="popup__field-name" name="name" type="text"
+            required
+            minlength="2"
+            maxlength="40"> <!--popup__field_type_error-->
+            <span id="popup__field-name-error" class="popup__error"></span>
+            <input
+            class="popup__field popup__field-status"
+            id="popup__field-status"
+            name="status"
+            type="text"
+            required
+            minlength="2"
+            maxlength="200">
+            <span id="popup__field-status-error" class="popup__error"></span>
             <button class="popup__button-save" type="submit">Сохранить</button> <!--popup__button-save_disabled-->
           </form>
         </div>
@@ -47,8 +61,24 @@
           <button type="button" class="popup__button-clouse popup__add-button-clouse"></button>
           <h2 class="popup__title">Новое место</h2>
           <form class="popup__form popup__add-form" name="edit-form" novalidate>
-            <input class="popup__field" id="popup__field-mesto" name="mesto" type="text" placeholder="Название" required minlength="2" maxlength="30">
-            <input class="popup__field" id="popup__field-link-mesto" name="link-mesto" type="url" placeholder="Ссылка на картинку" required>
+            <input 
+            class="popup__field popup__field-mesto"
+            id="popup__field-mesto"
+            name="mesto"
+            type="text"
+            placeholder="Название"
+            required
+            minlength="2"
+            maxlength="30">
+            <span id="popup__field-mesto-error" class="popup__error"></span>
+            <input
+            class="popup__field popup__field-link"
+            id="popup__field-link-mesto"
+            name="link-mesto"
+            type="url"
+            placeholder="Ссылка на картинку"
+            required>
+            <span id="popup__field-link-mesto-error" class="popup__error"></span>
             <button class="popup__button-save" type="submit">Создать</button>
           </form>
         </div>
@@ -71,6 +101,8 @@
       </div>
     </div>
   </template>
+  <script src="./scripts/initialCards.js"></script>
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 </html>
