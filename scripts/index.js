@@ -35,7 +35,7 @@ const validationSettings = {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', handleEscButton);
+  document.addEventListener('keydown',handleEscButton);
 };
 
 function closePopup(popup) {
@@ -81,9 +81,9 @@ function createCard(item) {
   photoElemet.alt = item.name;
   cardElement.querySelector('.elements__title').innerText = item.name;
 
-function handleLikeButton(evt){
-  evt.target.classList.toggle('elements__like-button_active');
-};
+  function handleLikeButton(evt){
+    evt.target.classList.toggle('elements__like-button_active');
+  };
 
   cardElement.querySelector('.elements__like-button').addEventListener('click', handleLikeButton);
  
