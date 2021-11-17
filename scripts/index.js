@@ -1,4 +1,3 @@
-
 const popupProfile = document.querySelector('.popup-edit');
 const popupEditButton = document.querySelector('.profile__edit-button');
 const popupEditClousedButton = document.querySelector('.popup__edit-button-clouse');
@@ -70,7 +69,7 @@ function handleFormSubmit (evt) {
   closePopup(popupProfile);
 };
 
-initialCards.forEach(element =>{
+initialCards.forEach(element => {
   renderCard(element);
 });
 
@@ -80,6 +79,10 @@ function createCard(item) {
   photoElemet.src = item.link;
   photoElemet.alt = item.name;
   cardElement.querySelector('.elements__title').innerText = item.name;
+
+  function handleLikeButton(evt){
+    evt.target.classList.toggle('elements__like-button_active');
+  };
 
   function handleLikeButton(evt){
     evt.target.classList.toggle('elements__like-button_active');
