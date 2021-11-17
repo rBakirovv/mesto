@@ -21,7 +21,7 @@ const popupElementsCloseButton = document.querySelector('.popup__elements-button
 const popupElementsImage = document.querySelector('.popup__img-full-size');
 const popupElementsName = document.querySelector('.popup__img-subtitle');
 
-const escapeButton = 27; 
+const ESCAPE = 27; 
 
 const validationSettings = {
   formSelector: '.popup__form',
@@ -44,7 +44,7 @@ function closePopup(popup) {
 
 function handleEscButton(evt){
   const popupOpened = document.querySelector('.popup_opened');
-  if (evt.keyCode === escapeButton){
+  if (evt.keyCode === ESCAPE){
     closePopup(popupOpened);
   };
 };
