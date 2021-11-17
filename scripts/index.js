@@ -90,7 +90,7 @@ function createCard(item) {
 
   cardElement.querySelector('.elements__like-button').addEventListener('click', handleLikeButton);
  
-  cardElement.querySelector('.elements__trash-button').addEventListener('click', function (evt){
+  cardElement.querySelector('.elements__trash-button').addEventListener('click',function (evt) {
     evt.target.closest('.elements__item').remove();
   });
 
@@ -133,4 +133,6 @@ formAddElement.addEventListener('submit',addCard);
 
 popupElementsCloseButton.addEventListener('click',() => closePopup(popupElements));
 
-document.addEventListener('mousedown',handleClickOverlay);
+popupProfile.addEventListener('click',handleClickOverlay);
+popupAddMesto.addEventListener('click',handleClickOverlay);
+popupElements.addEventListener('click',handleClickOverlay);
