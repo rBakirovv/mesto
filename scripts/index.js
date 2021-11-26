@@ -1,8 +1,8 @@
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
-import { validationSettings } from './validationSettings.js';
-import { initialCards } from  './initialCards.js';
-import { openPopup, closePopup, openPopupEdit, handleFormSubmit, handleClickOverlay } from './utils.js';
+import { validationSettings } from './components/validationSettings.js';
+import { initialCards } from  './components/initialCards.js';
+import { openPopup, closePopup, openPopupEdit, handleFormSubmit, handleClickOverlay } from './components/utils.js';
 import {
   popupProfile,
   popupEditButton,
@@ -16,7 +16,7 @@ import {
   linkImageInput,
   popupElements,
   popupElementsCloseButton,
-} from './data.js';
+} from './components/data.js';
 
 initialCards.forEach((item) => {
   renderCard(item);

@@ -1,5 +1,5 @@
-import { validationSettings } from './validationSettings.js';
-import { formAddElement, formEditElement } from './data.js'
+import { validationSettings } from './components/validationSettings.js';
+import { formAddElement, formEditElement } from './components/data.js'
 
 export class FormValidator{
   constructor(data, form)
@@ -19,7 +19,7 @@ export class FormValidator{
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._errorClass);
   };
-  
+
   _hideInputError(inputElement) {
     const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
@@ -39,7 +39,7 @@ export class FormValidator{
     const inputList = [...this._form.querySelectorAll(this._inputSelector)];
     const buttonElement = this._form.querySelector(this._submitButtonSelector);
     this._toggleButtonState(inputList, buttonElement);
-  
+
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
@@ -57,7 +57,7 @@ export class FormValidator{
       return !inputElement.validity.valid;
     });
   };
-  
+
   _toggleButtonState(inputList, buttonElement) {
     if (this._hasInvalidInput(inputList)){
       buttonElement.classList.add('popup__button-save_disabled');

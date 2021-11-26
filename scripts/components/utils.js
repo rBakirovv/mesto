@@ -11,8 +11,8 @@ export function closePopup(popup) {
 };
 
 function handleEscButton(evt){
-  const popupOpened = document.querySelector('.popup_opened');
   if (evt.keyCode === ESCAPE){
+    const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
   };
 };

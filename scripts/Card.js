@@ -1,5 +1,5 @@
-import { cardTemplate, popupElements, popupElementsImage, popupElementsName } from './data.js';
-import { openPopup } from './utils.js';
+import { cardTemplate, popupElements, popupElementsImage, popupElementsName } from './components/data.js';
+import { openPopup } from './components/utils.js';
 
 export class Card {
   constructor(data){
