@@ -1,4 +1,6 @@
 import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
+import { validationSettings } from './validationSettings.js';
 import { initialCards } from  './initialCards.js';
 import { openPopup, closePopup, openPopupEdit, handleFormSubmit, handleClickOverlay } from './utils.js';
 import {
@@ -39,6 +41,9 @@ function addCard(evt) {
 
   closePopup(popupAddMesto);
 };
+
+const formEditValidation = new FormValidator(validationSettings, formEditElement).enableValidation();
+const formAddValidation = new FormValidator(validationSettings, formAddElement).enableValidation();
 
 popupEditButton.addEventListener('click',openPopupEdit);
 popupEditCloseButton.addEventListener('click',() => closePopup(popupProfile));
