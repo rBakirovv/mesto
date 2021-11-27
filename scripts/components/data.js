@@ -21,6 +21,10 @@ const popupElementsCloseButton = document.querySelector('.popup__elements-button
 const popupElementsImage = document.querySelector('.popup__img-full-size');
 const popupElementsName = document.querySelector('.popup__img-subtitle');
 
+const popupAddButtonSave = popupAddMesto.querySelector('.popup__button-save');
+
+const elements = document.querySelector('.elements');
+
 const ESCAPE = 27;
 
 export {
@@ -44,5 +48,7 @@ export {
   popupElementsCloseButton,
   popupElementsImage,
   popupElementsName,
-  ESCAPE,
+  popupAddButtonSave,
+  elements,
+  ESCAPE
 }

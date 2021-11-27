@@ -16,16 +16,27 @@ import {
   linkImageInput,
   popupElements,
   popupElementsCloseButton,
+  popupAddButtonSave,
+  elements
 } from './components/data.js';
 
-initialCards.forEach((item) => {
-  renderCard(item);
-});
+function renderCard() {
+  initialCards.forEach((item) => {
+    elements.prepend(createCard(item));
+  });
+};
 
-function renderCard(item) {
+function createCard(item) {
   const card = new Card(item).createCard();
-  document.querySelector('.elements').prepend(card);
-}
+  return card
+};
+
+renderCard();
+
+function disableSaveButton(button) {
+  button.classList.add('popup__button-save_disabled');
+  button.disabled = true;
+};
 
 function addCard(evt) {
   evt.preventDefault();
@@ -35,11 +46,13 @@ function addCard(evt) {
     link: linkImageInput.value
   };
 
-  renderCard(newCard);
+  createCard(newCard);
+  elements.prepend(createCard(newCard));
 
   formAddElement.reset();
 
   closePopup(popupAddMesto);
+  disableSaveButton(popupAddButtonSave);
 };
 
 const formEditValidation = new FormValidator(validationSettings, formEditElement).enableValidation();

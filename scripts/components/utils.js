@@ -1,4 +1,4 @@
-import { ESCAPE, popupProfile, nameElement, nameInput, statusInput, statusElement } from "./data.js";
+import { ESCAPE, popupProfile, nameElement, nameInput, statusInput, statusElement } from './data.js';
 
 export function openPopup(popup) {
   popup.classList.add('popup_opened');

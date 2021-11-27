@@ -1,5 +1,5 @@
 import { validationSettings } from './components/validationSettings.js';
-import { formAddElement, formEditElement } from './components/data.js'
+import { formAddElement, formEditElement } from './components/data.js';
 
 export class FormValidator{
   constructor(data, form)
@@ -49,6 +49,9 @@ export class FormValidator{
   };
 
   enableValidation() {
+    this._form.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+    });
     this._setEventListeners();
   };
 
@@ -58,12 +61,20 @@ export class FormValidator{
     });
   };
 
+  /*resetValidation() {
+    this._toggleButtonState();
+
+    this._inputList.forEach((inputElement) => {
+      this._hideError(inputElement)
+    });
+  }*/
+
   _toggleButtonState(inputList, buttonElement) {
     if (this._hasInvalidInput(inputList)){
-      buttonElement.classList.add('popup__button-save_disabled');
-      buttonElement.disabled = true;
+      buttonElement.classList.add(this._inactiveButtonClass);
+      buttonElement.disabled = true; 
     } else{
-      buttonElement.classList.remove('popup__button-save_disabled');
+      buttonElement.classList.remove(this._inactiveButtonClass);
       buttonElement.disabled = false;
     };
   };
