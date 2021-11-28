@@ -2,27 +2,22 @@ import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 import { validationSettings } from './components/validationSettings.js';
 import { initialCards } from  './components/initialCards.js';
-import { openPopup, closePopup, openPopupEdit, handleFormSubmit, handleClickOverlay } from './components/utils.js';
+import { openPopup, closePopup, openPopupEdit, handleFormSubmit, disableSaveButton } from './components/utils.js';
 import {
-  popupProfile,
   popupEditButton,
-  popupEditCloseButton,
   formEditElement,
   popupAddMesto,
   popupAddButton,
-  popupAddCloseButton,
   formAddElement,
   placeInput,
   linkImageInput,
-  popupElements,
-  popupElementsCloseButton,
   popupAddButtonSave,
-  elements
+  cardList
 } from './components/data.js';
 
 function renderCard() {
   initialCards.forEach((item) => {
-    elements.prepend(createCard(item));
+    cardList.prepend(createCard(item));
   });
 };
 
@@ -33,11 +28,6 @@ function createCard(item) {
 
 renderCard();
 
-function disableSaveButton(button) {
-  button.classList.add('popup__button-save_disabled');
-  button.disabled = true;
-};
-
 function addCard(evt) {
   evt.preventDefault();
 
@@ -47,7 +37,7 @@ function addCard(evt) {
   };
 
   createCard(newCard);
-  elements.prepend(createCard(newCard));
+  cardList.prepend(createCard(newCard));
 
   formAddElement.reset();
 
@@ -59,15 +49,7 @@ const formEditValidation = new FormValidator(validationSettings, formEditElement
 const formAddValidation = new FormValidator(validationSettings, formAddElement).enableValidation();
 
 popupEditButton.addEventListener('click',openPopupEdit);
-popupEditCloseButton.addEventListener('click',() => closePopup(popupProfile));
 formEditElement.addEventListener('submit', handleFormSubmit);
 
 popupAddButton.addEventListener('click',() => openPopup(popupAddMesto));
-popupAddCloseButton.addEventListener('click',() => closePopup(popupAddMesto));
 formAddElement.addEventListener('submit',addCard);
-
-popupElementsCloseButton.addEventListener('click',() => closePopup(popupElements));
-
-popupProfile.addEventListener('click',handleClickOverlay);
-popupAddMesto.addEventListener('click',handleClickOverlay);
-popupElements.addEventListener('click',handleClickOverlay);
