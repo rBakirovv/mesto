@@ -48,8 +48,14 @@ function addCard(evt) {
 const formEditValidation = new FormValidator(validationSettings, formEditElement).enableValidation();
 const formAddValidation = new FormValidator(validationSettings, formAddElement).enableValidation();
 
-popupEditButton.addEventListener('click',openPopupEdit);
+popupEditButton.addEventListener('click', () => {
+  openPopupEdit();
+  const formEditReset = new FormValidator(validationSettings, formEditElement).resetValidation();
+});
 formEditElement.addEventListener('submit', handleFormSubmit);
 
-popupAddButton.addEventListener('click',() => openPopup(popupAddMesto));
+popupAddButton.addEventListener('click', () => {
+  openPopup(popupAddMesto);
+  const formAddReset = new FormValidator(validationSettings, formAddElement).resetValidation();
+});
 formAddElement.addEventListener('submit',addCard);

@@ -1,5 +1,4 @@
 import { validationSettings } from './components/validationSettings.js';
-import { formAddElement, formEditElement } from './components/data.js';
 
 export class FormValidator{
   constructor(data, form)
@@ -11,6 +10,8 @@ export class FormValidator{
       this._inputErrorClass = data.inputErrorClass;
       this._errorClass = data.errorClass;
       this._form = form
+      this._inputList = [...this._form.querySelectorAll(this._inputSelector)];
+      this._buttonElement = this._form.querySelector(this._submitButtonSelector);
   };
 
   _showInputError = (inputElement, errorMessage) => {
@@ -36,14 +37,12 @@ export class FormValidator{
   };
 
   _setEventListeners() {
-    const inputList = [...this._form.querySelectorAll(this._inputSelector)];
-    const buttonElement = this._form.querySelector(this._submitButtonSelector);
-    this._toggleButtonState(inputList, buttonElement);
+    this._toggleButtonState(this._inputList, this._buttonElement);
 
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(inputList, buttonElement);
+        this._toggleButtonState(this._inputList, this._buttonElement);
       });
     });
   };
@@ -62,10 +61,10 @@ export class FormValidator{
   };
 
   resetValidation() {
-    this._toggleButtonState();
+    this._toggleButtonState(this._inputList, this._buttonElement);
 
     this._inputList.forEach((inputElement) => {
-      this._hideError(inputElement)
+      this._hideInputError(inputElement);
     });
   }
 
