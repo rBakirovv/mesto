@@ -45,17 +45,21 @@ function addCard(evt) {
   disableSaveButton(popupAddButtonSave);
 };
 
-const formEditValidation = new FormValidator(validationSettings, formEditElement).enableValidation();
-const formAddValidation = new FormValidator(validationSettings, formAddElement).enableValidation();
+const formEditValidation = new FormValidator(validationSettings, formEditElement);
+const formAddValidation = new FormValidator(validationSettings, formAddElement);
+
+formEditValidation.enableValidation()
+formAddValidation.enableValidation()
 
 popupEditButton.addEventListener('click', () => {
   openPopupEdit();
-  const formEditReset = new FormValidator(validationSettings, formEditElement).resetValidation();
+  formEditValidation.resetValidation();
 });
+
 formEditElement.addEventListener('submit', handleFormSubmit);
 
 popupAddButton.addEventListener('click', () => {
   openPopup(popupAddMesto);
-  const formAddReset = new FormValidator(validationSettings, formAddElement).resetValidation();
+  formAddValidation.resetValidation();
 });
 formAddElement.addEventListener('submit',addCard);
