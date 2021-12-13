@@ -50,7 +50,7 @@ popupProfile.setEventListeners();
 const popupAddCard = new PopupWithForm(selectors.popupNewCardSelector, (data) => {
   const card = renderCard(data);
   newSection.addItem(card);
-}); // // пофиксить
+});
 popupAddCard.setEventListeners();
 
 popupEditButton.addEventListener('click', () => {
