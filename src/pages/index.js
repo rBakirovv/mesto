@@ -47,11 +47,10 @@ const popupProfile = new PopupWithForm(selectors.popupProfileSelector, ()=>{
 });
 popupProfile.setEventListeners();
 
-
 const popupAddCard = new PopupWithForm(selectors.popupNewCardSelector, (data) => {
   const card = renderCard(data);
   newSection.addItem(card);
-}); // пофиксить
+}); // // пофиксить
 popupAddCard.setEventListeners();
 
 popupEditButton.addEventListener('click', () => {
