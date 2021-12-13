@@ -1,14 +1,16 @@
-import { cardTemplate, popupElements, popupElementsImage, popupElementsName } from './components/data.js';
-import { openPopup } from './components/utils.js';
+import { cardTemplate } from '../utils/data.js';
 
-export class Card {
-  constructor(data){
+export default class Card {
+  constructor(data, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
   };
 
   _getTemplate() {
-    const cardElement = cardTemplate.cloneNode(true);
+    const cardElement = cardTemplate
+    .content
+    .cloneNode(true);
     return cardElement;
   };
 
@@ -32,13 +34,6 @@ export class Card {
     evt.target.closest('.elements__item').remove();
   };
 
-  _openCard() {
-    openPopup(popupElements);
-    popupElementsImage.src = this._link;
-    popupElementsImage.alt = this._name;
-    popupElementsName.textContent = this._name;
-  };
-
   _setEventListeners() {
     this._element.querySelector('.elements__like-button').addEventListener('click', (evt) => {
       this._handleLikeButton(evt);
@@ -49,7 +44,7 @@ export class Card {
     });
 
     this._element.querySelector('.elements__photo').addEventListener('click', () => {
-      this._openCard();
+      this._handleCardClick();
     });
   };
 };

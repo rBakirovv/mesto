@@ -1,6 +1,4 @@
-import { validationSettings } from './components/validationSettings.js';
-
-export class FormValidator{
+export default class FormValidator{
   constructor(data, form)
     {
       this._formSelector = data.formSelector;
@@ -67,6 +65,16 @@ export class FormValidator{
       this._hideInputError(inputElement);
     });
   }
+
+  disableSaveButton() {
+    this._buttonElement.classList.add('popup__button-save_disabled');
+    this._buttonElement.disabled = true;
+  };
+
+  enableSaveButton() {
+    this._buttonElement.classList.remove('popup__button-save_disabled');
+    this._buttonElement.disabled = false;
+  };
 
   _toggleButtonState(inputList, buttonElement) {
     if (this._hasInvalidInput(inputList)){
