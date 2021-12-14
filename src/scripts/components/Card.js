@@ -1,14 +1,14 @@
-import { cardTemplate } from '../utils/data.js';
-
 export default class Card {
-  constructor(data, handleCardClick) {
+  
+  constructor(data, handleCardClick, cardTemplate) {
+    this._cardTemplate = cardTemplate 
     this._name = data.name;
     this._link = data.link;
     this._handleCardClick = handleCardClick;
   };
 
   _getTemplate() {
-    const cardElement = cardTemplate
+    const cardElement = document.querySelector(this._cardTemplate)
     .content
     .cloneNode(true);
     return cardElement;

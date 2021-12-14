@@ -1,8 +1,7 @@
-import { popups, ESCAPE } from '../utils/data.js'
-
 export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
+    this._handleEscClose = this._handleEscClose.bind(this);
   };
 
   open() {
@@ -16,25 +15,22 @@ export default class Popup {
   };
 
   _handleEscClose = (evt) => {
-    if (evt.keyCode === ESCAPE) {
+    if (evt.key === 'Escape') {
       this.close();
     };
   };
 
   setEventListeners(){
-    popups.forEach((popup) => {
-      popup.addEventListener('click', (evt) => {
-          if (evt.target.classList.contains('popup_opened')) {
-            this.close();
-          }
-          if (evt.target.classList.contains('popup__close')) {
-            this.close();
-          }
-          if (evt.target.classList.contains('popup__button-clouse')) {
-            this.close();
-          }
-      })
+    this._popup.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+        this.close();
+      }
+      if (evt.target.classList.contains('popup__close')) {
+        this.close();
+      }
+      if (evt.target.classList.contains('popup__button-clouse')) {
+        this.close();
+      }
     })
   };
-
 }

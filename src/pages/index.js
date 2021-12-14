@@ -15,7 +15,7 @@ import {
   validationSettings,
   initialCards,
   selectors
-} from '../scripts/utils/data.js';
+} from '../scripts/utils/constants.js';
 
 const renderCard = (data) => {
   const card = new Card(data, () => {
@@ -42,15 +42,15 @@ formAddValidation.enableValidation()
 
 const userInfo = new UserInfo(selectors.name, selectors.info);
 
-const popupProfile = new PopupWithForm(selectors.popupProfileSelector, ()=>{
-  userInfo.setUserInfo(nameInput, statusInput);
+const popupProfile = new PopupWithForm(selectors.popupProfileSelector, (data)=>{
+  userInfo.setUserInfo(data);
 });
 popupProfile.setEventListeners();
 
 const popupAddCard = new PopupWithForm(selectors.popupNewCardSelector, (data) => {
   const card = renderCard(data);
   newSection.addItem(card);
-}); // // пофиксить
+}); 
 popupAddCard.setEventListeners();
 
 popupEditButton.addEventListener('click', () => {
@@ -67,4 +67,3 @@ popupAddButton.addEventListener('click', () => {
   formAddValidation.resetValidation();
   popupAddCard.open();
 });
-

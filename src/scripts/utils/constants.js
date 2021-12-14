@@ -10,10 +10,6 @@ const cardTemplate = document.querySelector('.card-template');
 const popupElementsImage = document.querySelector('.popup__img-full-size');
 const popupElementsName = document.querySelector('.popup__img-subtitle');
 
-const popups = document.querySelectorAll('.popup');
-
-const ESCAPE = 27;
-
 export const selectors = {
   name: '.profile__name',
   info: '.profile__status',
@@ -61,25 +57,13 @@ export const initialCards = [
 ];
 
 export {
-  //popupEdit,
   popupEditButton,
   formEditElement,
-  //nameElement,
-  //statusElement,
   nameInput,
   statusInput,
-  //popupAddMesto,
   popupAddButton,
- // cardList,
   cardTemplate,
   formAddElement,
-  //placeInput,
-  //linkImageInput,
-  //popupElements,
   popupElementsImage,
   popupElementsName,
-  //popupAddButtonSave,
-  //popupEditButtonSave,
-  popups,
-  ESCAPE
 }
