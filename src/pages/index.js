@@ -40,9 +40,9 @@ const formAddValidation = new FormValidator(validationSettings, formAddElement);
 formEditValidation.enableValidation()
 formAddValidation.enableValidation()
 
-const userInfo = new UserInfo(selectors.name, selectors.info);
+const userInfo = new UserInfo(selectors);
 
-const popupProfile = new PopupWithForm(selectors.popupProfileSelector, (data)=>{
+const popupProfile = new PopupWithForm(selectors.popupProfileSelector, (data) => {
   userInfo.setUserInfo(data);
 });
 popupProfile.setEventListeners();
