@@ -86,6 +86,10 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__like-button/_active/elements__like-button_active.css ***!
   \****************************************************************************************************************************************************************************************************/
 .elements__like-button_active{background-image:url(35948469632d0421d697.svg)}
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__like-number/elements__like-number.css ***!
+  \*************************************************************************************************************************************************************************************/
+.elements__like-number{font-family:Inter,Arial,sans-serif;font-size:13px;font-weight:400;line-height:16px;margin:3px 20px 0 0;text-align:center}
 /*!***********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/footer/__author/footer__author.css ***!
   \***********************************************************************************************************************************************************************/
