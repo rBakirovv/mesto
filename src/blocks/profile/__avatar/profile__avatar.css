@@ -4,6 +4,10 @@
   border-radius: 50%;
 }
 
+/*.profile__avatar:hover{
+  opacity: 0.8;
+}*/
+
 @media screen and (max-width: 900px) {
   .profile__avatar{
     margin-left: 19px;
