@@ -17,5 +17,18 @@ export default class Api{
       }
     });
   };
-};
 
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'GET',
+      headers: this._headers
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        return Promise.reject(`Ошибка: ${res.status}`);
+      }
+    });
+  };
+};
