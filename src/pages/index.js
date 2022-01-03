@@ -28,7 +28,10 @@ const api = new Api({
 const defaultCards = api.getInitialCards()
 .then((data) => {
   newSection.render(data);
-});
+})
+.catch((err) => {
+  console.log(err);
+}); 
 
 api.getUserInfo();
 
