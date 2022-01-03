@@ -14,7 +14,6 @@ import {
   formEditElement,
   formAddElement,
   validationSettings,
-  initialCards,
   selectors
 } from '../scripts/utils/constants.js';
 
@@ -26,6 +25,11 @@ const api = new Api({
   }
 }); 
 
+const defaultCards = api.getInitialCards()
+.then((data) => {
+  newSection.render(data);
+})
+
 const renderCard = (data) => {
   const card = new Card(data, () => {
   popupWithImage.open(data);
@@ -33,12 +37,10 @@ const renderCard = (data) => {
  return card
 };
 
-const newSection = new Section({items: initialCards, renderer: (item) =>{
+const newSection = new Section({renderer: (item) =>{
   const card = renderCard(item);
   newSection.addItem(card);
 }}, selectors.containerSelector);
-
-newSection.render();
 
 const popupWithImage = new PopupWithImage(selectors.popupImageSelector);
 popupWithImage.setEventListeners();
