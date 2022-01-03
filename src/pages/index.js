@@ -1,4 +1,5 @@
 import './index.css';
+import Api from '../scripts/components/Api.js';
 import Card  from '../scripts/components/Card.js';
 import Section from '../scripts/components/Section.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
@@ -16,6 +17,14 @@ import {
   initialCards,
   selectors
 } from '../scripts/utils/constants.js';
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-33',
+  headers: {
+    authorization: '32b3c185-edda-4421-8d96-b6aece916c09',
+    'Content-Type': 'application/json'
+  }
+}); 
 
 const renderCard = (data) => {
   const card = new Card(data, () => {
