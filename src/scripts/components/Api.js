@@ -20,6 +20,18 @@ export default class Api{
     .then(this._errorHandler);
   };
 
+  setUserInfo({name, about}) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        about: about
+      })
+    })
+    .then(this._errorHandler);
+  };
+
   _errorHandler(res) {
     if (res.ok) {
       return res.json();
