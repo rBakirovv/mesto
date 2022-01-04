@@ -17,6 +17,12 @@ import {
   selectors
 } from '../scripts/utils/constants.js';
 
+function apiErrorHandler(err) {
+  (err) => {
+    console.log(err);
+  }; 
+};
+
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-33',
   headers: {
@@ -25,15 +31,12 @@ const api = new Api({
   }
 }); 
 
-const defaultCards = api.getInitialCards()
-.then((data) => {
+api.getAppInfo()
+.then(([data, info]) => {
   newSection.render(data);
+  userInfo.setUserInfo(info);
 })
-.catch((err) => {
-  console.log(err);
-}); 
-
-api.getUserInfo();
+.catch(apiErrorHandler());
 
 const renderCard = (data) => {
   const card = new Card(data, () => {
@@ -59,7 +62,8 @@ formAddValidation.enableValidation()
 const userInfo = new UserInfo(selectors);
 
 const popupProfile = new PopupWithForm(selectors.popupProfileSelector, (data) => {
-  userInfo.setUserInfo(data);
+  api.setUserInfo(data)
+  .then((info) => userInfo.setUserInfo(info))
 });
 popupProfile.setEventListeners();
 
@@ -70,9 +74,11 @@ const popupAddCard = new PopupWithForm(selectors.popupNewCardSelector, (data) =>
 popupAddCard.setEventListeners();
 
 popupEditButton.addEventListener('click', () => {
-  const { name, info } = userInfo.getUserInfo();
-  nameInput.value = name;
-  statusInput.value = info;
+  api.getUserInfo()
+  .then((data) => {
+    nameInput.value = data.name;
+    statusInput.value = data.about;
+  })
   formEditValidation.enableSaveButton();
   formEditValidation.resetValidation();
   popupProfile.open();

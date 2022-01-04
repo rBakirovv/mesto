@@ -12,7 +12,7 @@ const popupElementsName = document.querySelector('.popup__img-subtitle');
 
 export const selectors = {
   name: '.profile__name',
-  info: '.profile__status',
+  about: '.profile__status',
   cardSelector: '.card-template',
   popupImageSelector: '.popup-elements',
   popupProfileSelector: '.popup-edit',
