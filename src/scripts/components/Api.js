@@ -32,6 +32,18 @@ export default class Api{
     .then(this._errorHandler);
   };
 
+  createNewCard(data) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: data.name,
+        link: data.link
+      })
+    })
+    .then(this._errorHandler);
+  };
+
   getAppInfo() {
     return Promise.all([
       this.getInitialCards(),
