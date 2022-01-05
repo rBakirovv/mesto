@@ -68,8 +68,12 @@ const popupProfile = new PopupWithForm(selectors.popupProfileSelector, (data) =>
 popupProfile.setEventListeners();
 
 const popupAddCard = new PopupWithForm(selectors.popupNewCardSelector, (data) => {
-  const card = renderCard(data);
-  newSection.addItem(card);
+  api.createNewCard(data)
+  .then((info) => {
+    const card = renderCard(info);
+    newSection.addItem(card);
+  })
+  .catch(apiErrorHandler());
 });
 popupAddCard.setEventListeners();
 
