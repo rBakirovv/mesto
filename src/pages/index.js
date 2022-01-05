@@ -20,7 +20,7 @@ import {
 function apiErrorHandler(err) {
   (err) => {
     console.log(err);
-  }; 
+  };
 };
 
 const api = new Api({
@@ -29,7 +29,7 @@ const api = new Api({
     authorization: '32b3c185-edda-4421-8d96-b6aece916c09',
     'Content-Type': 'application/json'
   }
-}); 
+});
 
 api.getAppInfo()
 .then(([data, info]) => {
@@ -40,7 +40,7 @@ api.getAppInfo()
 .catch(apiErrorHandler());
 
 const renderCard = (data) => {
-  const card = new Card(data, 
+  const card = new Card(data,
 
   { handleCardClick: () => {
   popupWithImage.open(data)},
@@ -54,7 +54,7 @@ const renderCard = (data) => {
     .catch(apiErrorHandler());
   }
 }, selectors.cardSelector);
- return card.createCard
+ return card.createCard();
 };
 
 const newSection = new Section({renderer: (item) =>{
