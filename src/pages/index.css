@@ -42,7 +42,6 @@
 @import url(../blocks/popup/__field/_type/popup__field_type_error.css);
 @import url(../blocks/popup/__button-save/popup__button-save.css);
 @import url(../blocks/popup/__button-save/_disabled/popup__button-save_disabled.css);
-@import url(../blocks/popup/button-save-confirm/popup__button-save-confirm.css);
 @import url(../blocks/popup/__elements-container/popup__elements-container.css);
 @import url(../blocks/popup/__img-full-size/popup__img-full-size.css);
 @import url(../blocks/popup/__img-subtitle/popup__img-subtitle.css);

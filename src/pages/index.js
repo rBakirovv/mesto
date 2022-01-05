@@ -50,10 +50,11 @@ const renderCard = (data) => {
     .then(() => {
       card.deleteCard();
     })
+   /*.then(() => popupConfirm.close())*/
     .catch(apiErrorHandler());
   }
-}, selectors.cardSelector).createCard();
- return card
+}, selectors.cardSelector);
+ return card.createCard
 };
 
 const newSection = new Section({renderer: (item) =>{
@@ -87,6 +88,16 @@ const popupAddCard = new PopupWithForm(selectors.popupNewCardSelector, (data) =>
   .catch(apiErrorHandler());
 });
 popupAddCard.setEventListeners();
+
+/*const popupConfirm = new PopupWithForm(selectors.popupConfirmDelete, (data) => {
+  api.deleteCard(data)
+    .then(() => {
+      card.deleteCard();
+    })
+    .then(() => popupConfirm.close())
+    .catch(apiErrorHandler());
+})
+popupConfirm.setEventListeners();*/
 
 popupEditButton.addEventListener('click', () => {
   const { name, about } = userInfo.getUserInfo();
