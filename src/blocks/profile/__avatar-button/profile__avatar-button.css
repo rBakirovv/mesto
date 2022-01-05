@@ -17,3 +17,9 @@
   background-color:rgba(0, 0, 0, 0.8);
   background-size: 26px;
 }
+
+@media screen and (max-width: 900px) {
+  .profile__avatar-button{
+    margin-left: 19px;
+  }
+}
