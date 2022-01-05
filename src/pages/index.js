@@ -35,13 +35,24 @@ api.getAppInfo()
 .then(([data, info]) => {
   newSection.render(data);
   userInfo.setUserInfo(info);
+  let user = info._id;
 })
 .catch(apiErrorHandler());
 
 const renderCard = (data) => {
-  const card = new Card(data, () => {
-  popupWithImage.open(data);
- }, selectors.cardSelector).createCard();
+  const card = new Card(data, 
+
+  { handleCardClick: () => {
+  popupWithImage.open(data)},
+
+  handleDeleteIconClick: () => {
+    api.deleteCard(data)
+    .then(() => {
+      card.deleteCard();
+    })
+    .catch(apiErrorHandler());
+  }
+}, selectors.cardSelector).createCard();
  return card
 };
 
@@ -78,11 +89,9 @@ const popupAddCard = new PopupWithForm(selectors.popupNewCardSelector, (data) =>
 popupAddCard.setEventListeners();
 
 popupEditButton.addEventListener('click', () => {
-  api.getUserInfo()
-  .then((data) => {
-    nameInput.value = data.name;
-    statusInput.value = data.about;
-  })
+  const { name, about } = userInfo.getUserInfo();
+  nameInput.value = name;
+  statusInput.value = about;
   formEditValidation.enableSaveButton();
   formEditValidation.resetValidation();
   popupProfile.open();

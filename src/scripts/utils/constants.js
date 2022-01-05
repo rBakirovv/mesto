@@ -17,6 +17,7 @@ export const selectors = {
   popupImageSelector: '.popup-elements',
   popupProfileSelector: '.popup-edit',
   popupNewCardSelector: '.popup-add',
+  popupConfirmDelete: '.popup-confirm',
   containerSelector: '.elements',
 };
 
