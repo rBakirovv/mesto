@@ -1,6 +1,6 @@
 export default class Card {
 
-  constructor(data, {handleCardClick, handleDeleteIconClick}, cardTemplate) {
+  constructor(data, { handleCardClick, handleDeleteIconClick }, cardTemplate) {
     this._cardTemplate = cardTemplate
     this._name = data.name;
     this._link = data.link;
@@ -12,9 +12,9 @@ export default class Card {
 
   _getTemplate() {
     const cardElement = document.querySelector(this._cardTemplate)
-    .content
-    .querySelector('.elements__item')
-    .cloneNode(true);
+      .content
+      .querySelector('.elements__item')
+      .cloneNode(true);
     return cardElement;
   };
 
