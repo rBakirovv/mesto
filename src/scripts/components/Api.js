@@ -32,6 +32,17 @@ export default class Api {
       .then(this._errorHandler);
   };
 
+  setUserAvatar(data) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: data.avatar
+      })
+    })
+      .then(this._errorHandler);
+  };
+
   createNewCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',

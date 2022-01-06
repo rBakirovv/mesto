@@ -15,6 +15,8 @@ import {
   formEditElement,
   formAddElement,
   validationSettings,
+  popupAvatarButton,
+  avatarImage,
   selectors
 } from '../scripts/utils/constants.js';
 
@@ -85,6 +87,7 @@ const userInfo = new UserInfo(selectors);
 const popupProfile = new PopupWithForm(selectors.popupProfileSelector, (data) => {
   api.setUserInfo(data)
     .then((info) => userInfo.setUserInfo(info))
+    .catch(apiErrorHandler());
 });
 popupProfile.setEventListeners();
 
@@ -98,7 +101,19 @@ const popupAddCard = new PopupWithForm(selectors.popupNewCardSelector, (data) =>
 });
 popupAddCard.setEventListeners();
 
-const popupConfirm = new PopupWithSubmit(selectors.popupConfirmDelete);
+const popupAvatar = new PopupWithForm(selectors.popupAvatarSelector, (data) => {
+  api.setUserAvatar(data)
+    .then((info) => {
+      userInfo.setUserInfo(info)
+    })
+    .then(() => {
+      popupAvatar.close();
+    })
+    .catch(apiErrorHandler());
+});
+popupAvatar.setEventListeners();
+
+const popupConfirm = new PopupWithSubmit(selectors.popupConfirmSelector);
 popupConfirm.setEventListeners();
 
 popupEditButton.addEventListener('click', () => {
@@ -115,3 +130,7 @@ popupAddButton.addEventListener('click', () => {
   formAddValidation.resetValidation();
   popupAddCard.open();
 });
+
+popupAvatarButton.addEventListener('click', () => {
+  popupAvatar.open();
+})

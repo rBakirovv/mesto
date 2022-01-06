@@ -6,6 +6,9 @@ const statusInput = document.querySelector('#popup__field-status');
 const popupAddButton = document.querySelector('.profile__add-button');
 const formAddElement = document.querySelector('.popup__add-form');
 
+const popupAvatarButton = document.querySelector('.profile__avatar-button');
+const avatarImage = document.querySelector('.profile__avatar');
+
 const cardTemplate = document.querySelector('.card-template');
 const popupElementsImage = document.querySelector('.popup__img-full-size');
 const popupElementsName = document.querySelector('.popup__img-subtitle');
@@ -13,11 +16,13 @@ const popupElementsName = document.querySelector('.popup__img-subtitle');
 export const selectors = {
   name: '.profile__name',
   about: '.profile__status',
+  avatar: '.profile__avatar',
   cardSelector: '.card-template',
   popupImageSelector: '.popup-elements',
   popupProfileSelector: '.popup-edit',
   popupNewCardSelector: '.popup-add',
-  popupConfirmDelete: '.popup-confirm',
+  popupConfirmSelector: '.popup-confirm',
+  popupAvatarSelector: '.popup-avatar',
   containerSelector: '.elements',
 };
 
@@ -40,4 +45,6 @@ export {
   formAddElement,
   popupElementsImage,
   popupElementsName,
+  popupAvatarButton,
+  avatarImage
 }
