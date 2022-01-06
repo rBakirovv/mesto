@@ -1,9 +1,10 @@
 import './index.css';
 import Api from '../scripts/components/Api.js';
-import Card  from '../scripts/components/Card.js';
+import Card from '../scripts/components/Card.js';
 import Section from '../scripts/components/Section.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import PopupWithSubmit from '../scripts/components/PopupWithSubmit.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 import FormValidator from '../scripts/components/FormValidator.js';
 import {
@@ -32,35 +33,43 @@ const api = new Api({
 });
 
 api.getAppInfo()
-.then(([data, info]) => {
-  newSection.render(data);
-  userInfo.setUserInfo(info);
-  let user = info._id;
-})
-.catch(apiErrorHandler());
+  .then(([data, info]) => {
+    newSection.render(data);
+    userInfo.setUserInfo(info);
+  })
+  .catch(apiErrorHandler());
 
 const renderCard = (data) => {
   const card = new Card(data,
 
-  { handleCardClick: () => {
-  popupWithImage.open(data)},
+    {
+      handleCardClick: () => {
+        popupWithImage.open(data)
+      },
 
-  handleDeleteIconClick: () => {
-    api.deleteCard(data)
-    .then(() => {
-      card.deleteCard();
-    })
-   /*.then(() => popupConfirm.close())*/
-    .catch(apiErrorHandler());
-  }
-}, selectors.cardSelector);
- return card.createCard();
+      handleDeleteIconClick: () => {
+        popupConfirm.confirmHandler(() => {
+          api.deleteCard(data)
+            .then(() => {
+              card.deleteCard();
+            })
+            .then(() => {
+              popupConfirm.close()
+            })
+            .catch(apiErrorHandler());
+        })
+        popupConfirm.open();
+      }
+    }, selectors.cardSelector);
+  return card.createCard();
 };
 
-const newSection = new Section({renderer: (item) =>{
-  const card = renderCard(item);
-  newSection.addItem(card);
-}}, selectors.containerSelector);
+const newSection = new Section({
+  renderer: (item) => {
+    const card = renderCard(item);
+    newSection.addItem(card);
+  }
+}, selectors.containerSelector);
 
 const popupWithImage = new PopupWithImage(selectors.popupImageSelector);
 popupWithImage.setEventListeners();
@@ -75,29 +84,22 @@ const userInfo = new UserInfo(selectors);
 
 const popupProfile = new PopupWithForm(selectors.popupProfileSelector, (data) => {
   api.setUserInfo(data)
-  .then((info) => userInfo.setUserInfo(info))
+    .then((info) => userInfo.setUserInfo(info))
 });
 popupProfile.setEventListeners();
 
 const popupAddCard = new PopupWithForm(selectors.popupNewCardSelector, (data) => {
   api.createNewCard(data)
-  .then((info) => {
-    const card = renderCard(info);
-    newSection.addItem(card);
-  })
-  .catch(apiErrorHandler());
+    .then((info) => {
+      const card = renderCard(info);
+      newSection.addItem(card);
+    })
+    .catch(apiErrorHandler());
 });
 popupAddCard.setEventListeners();
 
-/*const popupConfirm = new PopupWithForm(selectors.popupConfirmDelete, (data) => {
-  api.deleteCard(data)
-    .then(() => {
-      card.deleteCard();
-    })
-    .then(() => popupConfirm.close())
-    .catch(apiErrorHandler());
-})
-popupConfirm.setEventListeners();*/
+const popupConfirm = new PopupWithSubmit(selectors.popupConfirmDelete);
+popupConfirm.setEventListeners();
 
 popupEditButton.addEventListener('click', () => {
   const { name, about } = userInfo.getUserInfo();

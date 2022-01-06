@@ -1,4 +1,4 @@
-export default class Api{
+export default class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
     this._headers = options.headers;
@@ -9,7 +9,7 @@ export default class Api{
       method: 'GET',
       headers: this._headers
     })
-    .then(this._errorHandler);
+      .then(this._errorHandler);
   };
 
   getUserInfo() {
@@ -17,7 +17,7 @@ export default class Api{
       method: 'GET',
       headers: this._headers
     })
-    .then(this._errorHandler);
+      .then(this._errorHandler);
   };
 
   setUserInfo(data) {
@@ -29,7 +29,7 @@ export default class Api{
         about: data.about
       })
     })
-    .then(this._errorHandler);
+      .then(this._errorHandler);
   };
 
   createNewCard(data) {
@@ -41,15 +41,15 @@ export default class Api{
         link: data.link
       })
     })
-    .then(this._errorHandler);
+      .then(this._errorHandler);
   };
 
-  deleteCard({_id}) {
+  deleteCard({ _id }) {
     return fetch(`${this._baseUrl}/cards/${_id}`, {
       method: 'DELETE',
       headers: this._headers,
     })
-    .then(this._errorHandler);
+      .then(this._errorHandler);
   };
 
   getAppInfo() {
