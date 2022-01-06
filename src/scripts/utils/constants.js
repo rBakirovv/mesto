@@ -7,7 +7,7 @@ const popupAddButton = document.querySelector('.profile__add-button');
 const formAddElement = document.querySelector('.popup__add-form');
 
 const popupAvatarButton = document.querySelector('.profile__avatar-button');
-const avatarImage = document.querySelector('.profile__avatar');
+const formAvatarElement = document.querySelector('.popup__avatar-form');
 
 const cardTemplate = document.querySelector('.card-template');
 const popupElementsImage = document.querySelector('.popup__img-full-size');
@@ -46,5 +46,5 @@ export {
   popupElementsImage,
   popupElementsName,
   popupAvatarButton,
-  avatarImage
+  formAvatarElement,
 }
