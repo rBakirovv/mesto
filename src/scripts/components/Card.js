@@ -5,6 +5,7 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
+    this._likes = data.likes;
     this._handleCardClick = handleCardClick;
     this._handleDeleteIconClick = handleDeleteIconClick;
   };
@@ -24,6 +25,9 @@ export default class Card {
     this._photo = this._element.querySelector('.elements__photo');
 
     this._setEventListeners();
+
+    const likeNumber = this._element.querySelector('.elements__like-number');
+    likeNumber.textContent = this._likes.length;
 
     const photoElemet = this._element.querySelector('.elements__photo');
     photoElemet.src = this._link;
