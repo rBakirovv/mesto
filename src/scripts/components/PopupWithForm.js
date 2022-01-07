@@ -1,11 +1,13 @@
 import Popup from "./Popup";
 
-export default class PopupWithForm extends Popup{
+export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitHandler) {
     super(popupSelector);
     this._submitHandler = submitHandler;
     this._form = this._popup.querySelector('.popup__form');
     this._fields = this._popup.querySelectorAll('.popup__field');
+    this._buttonSave = this._popup.querySelector('.popup__button-save');
+    this._buttonSaveText = this._buttonSave.textContent;
   };
 
   _getInputValues() {
@@ -24,6 +26,12 @@ export default class PopupWithForm extends Popup{
       this.close();
     });
   };
+
+  renderLoading(isLoading) {
+    isLoading
+      ? (this._buttonSave.textContent = 'Загрузка ...')
+      : (this._buttonSave.textContent = this._buttonSaveText);
+  }
 
   close() {
     super.close();

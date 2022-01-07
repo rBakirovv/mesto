@@ -76,9 +76,6 @@ const newSection = new Section({
   }
 }, selectors.containerSelector);
 
-const popupWithImage = new PopupWithImage(selectors.popupImageSelector);
-popupWithImage.setEventListeners();
-
 const formEditValidation = new FormValidator(validationSettings, formEditElement);
 const formAddValidation = new FormValidator(validationSettings, formAddElement);
 const formAvatarValidation = new FormValidator(validationSettings, formAvatarElement);
@@ -89,17 +86,25 @@ formAvatarValidation.enableValidation();
 
 const userInfo = new UserInfo(selectors);
 
+const popupWithImage = new PopupWithImage(selectors.popupImageSelector);
+popupWithImage.setEventListeners();
+
 const popupProfile = new PopupWithForm(selectors.popupProfileSelector, (data) => {
+  popupProfile.renderLoading(true)
   api.setUserInfo(data)
     .then((info) => userInfo.setUserInfo(info))
     .then(() => {
       popupAvatar.close();
     })
-    .catch(apiErrorHandler());
+    .catch(apiErrorHandler())
+    .finally(() => {
+      popupProfile.renderLoading(false)
+    });
 });
 popupProfile.setEventListeners();
 
 const popupAddCard = new PopupWithForm(selectors.popupNewCardSelector, (data) => {
+  popupAddCard.renderLoading(true)
   api.createNewCard(data)
     .then((info) => {
       const card = renderCard(info);
@@ -108,11 +113,15 @@ const popupAddCard = new PopupWithForm(selectors.popupNewCardSelector, (data) =>
     .then(() => {
       popupAvatar.close();
     })
-    .catch(apiErrorHandler());
+    .catch(apiErrorHandler())
+    .finally(() => {
+      popupAddCard.renderLoading(false)
+    });
 });
 popupAddCard.setEventListeners();
 
 const popupAvatar = new PopupWithForm(selectors.popupAvatarSelector, (data) => {
+  popupAvatar.renderLoading(true)
   api.setUserAvatar(data)
     .then((info) => {
       userInfo.setUserInfo(info)
@@ -120,7 +129,10 @@ const popupAvatar = new PopupWithForm(selectors.popupAvatarSelector, (data) => {
     .then(() => {
       popupAvatar.close();
     })
-    .catch(apiErrorHandler());
+    .catch(apiErrorHandler())
+    .finally(() => {
+      popupAvatar.renderLoading(false)
+    });
 });
 popupAvatar.setEventListeners();
 
