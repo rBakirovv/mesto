@@ -34,10 +34,13 @@ const api = new Api({
   }
 });
 
+let user;
+
 api.getAppInfo()
   .then(([data, info]) => {
-    newSection.render(data);
+    user = info._id
     userInfo.setUserInfo(info);
+    newSection.render(data);
   })
   .catch(apiErrorHandler());
 
@@ -62,7 +65,7 @@ const renderCard = (data) => {
         })
         popupConfirm.open();
       }
-    }, selectors.cardSelector);
+    }, selectors.cardSelector, user);
   return card.createCard();
 };
 
@@ -143,4 +146,4 @@ popupAvatarButton.addEventListener('click', () => {
   formAvatarValidation.disableSaveButton();
   formAvatarValidation.resetValidation();
   popupAvatar.open();
-})
+});

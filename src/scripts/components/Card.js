@@ -1,10 +1,12 @@
 export default class Card {
 
-  constructor(data, { handleCardClick, handleDeleteIconClick }, cardTemplate) {
+  constructor(data, { handleCardClick, handleDeleteIconClick }, cardTemplate, user) {
     this._cardTemplate = cardTemplate
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
+    this._user = user;
+    this._owner = data.owner._id;
     this._likes = data.likes;
     this._handleCardClick = handleCardClick;
     this._handleDeleteIconClick = handleDeleteIconClick;
@@ -25,6 +27,12 @@ export default class Card {
     this._photo = this._element.querySelector('.elements__photo');
 
     this._setEventListeners();
+
+    if (this._user != this._owner) {
+
+
+      this._trashButton.style.display = 'none';
+    };
 
     const likeNumber = this._element.querySelector('.elements__like-number');
     likeNumber.textContent = this._likes.length;
@@ -59,5 +67,5 @@ export default class Card {
       this._handleCardClick();
     });
   };
-};
+}
 
