@@ -63,6 +63,22 @@ export default class Api {
       .then(this._errorHandler);
   };
 
+  setLike({ _id }) {
+    return fetch(`${this._baseUrl}/cards/${_id}/likes`, {
+      method: 'PUT',
+      headers: this._headers,
+    })
+      .then(this._errorHandler);
+  };
+
+  deleteLike({ _id }) {
+    return fetch(`${this._baseUrl}/cards/${_id}/likes`, {
+      method: 'DELETE',
+      headers: this._headers,
+    })
+      .then(this._errorHandler);
+  };
+
   getAppInfo() {
     return Promise.all([
       this.getInitialCards(),

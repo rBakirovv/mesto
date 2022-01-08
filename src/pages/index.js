@@ -64,6 +64,24 @@ const renderCard = (data) => {
             .catch(apiErrorHandler());
         })
         popupConfirm.open();
+      },
+
+      handleLikeClick: (evt, likeCounter) => {
+        api.setLike(data)
+          .then((res) => {
+            evt.target.classList.add('elements__like-button_active');
+            likeCounter.textContent = res.likes.length;
+          })
+          .catch(apiErrorHandler());
+      },
+
+      handleDislikeClick: (evt, likeCounter) => {
+        api.deleteLike(data)
+          .then((res) => {
+            evt.target.classList.remove('elements__like-button_active');
+            likeCounter.textContent = res.likes.length;
+          })
+          .catch(apiErrorHandler());
       }
     }, selectors.cardSelector, user);
   return card.createCard();
