@@ -29,7 +29,11 @@
 /*!*************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar/profile__avatar.css ***!
   \*************************************************************************************************************************************************************************/
-.profile__avatar{border-radius:50%;height:120px;width:120px}@media screen and (max-width:900px){.profile__avatar{margin-left:19px}}
+.profile__avatar{border-radius:50%;height:120px;position:relative;width:120px}@media screen and (max-width:900px){.profile__avatar{margin-left:19px}}
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar-button/profile__avatar-button.css ***!
+  \***************************************************************************************************************************************************************************************/
+.profile__avatar-button{background-color:transparent;background-position:50%;background-repeat:no-repeat;border:none;border-radius:50%;cursor:pointer;height:120px;opacity:.6;position:absolute;transition:all .4s ease-in-out;width:120px}.profile__avatar-button:hover{background-color:rgba(0,0,0,.8);background-image:url(6c7bf05444b9793fdf6e.svg);background-size:26px}@media screen and (max-width:900px){.profile__avatar-button{margin-left:19px}}
 /*!*********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__info/profile__info.css ***!
   \*********************************************************************************************************************************************************************/
@@ -78,6 +82,10 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__title/elements__title.css ***!
   \*************************************************************************************************************************************************************************/
 .elements__title{font-family:Inter,Arial,sans-serif;font-size:24px;font-weight:900;line-height:29px;margin:25px 0 31px 21px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__like-container/elements__like-container.css ***!
+  \*******************************************************************************************************************************************************************************************/
+.elements__like-container{align-items:center;display:flex;flex-flow:column}
 /*!*************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__like-button/elements__like-button.css ***!
   \*************************************************************************************************************************************************************************************/
